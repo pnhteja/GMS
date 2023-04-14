@@ -1,0 +1,9 @@
+export const LOGIN_PATH = "/";
+export const ROOT_PATH = "/gms";
+export const HOME_PATH = "/gms/home";
+export const ALL_GRIEVANCES_PATH = "/gms/all";
+export const MY_GRIEVANCES_PATH = "/gms/my";
+export const ASSIGNED_GRIEVANCES_PATH = "/gms/assigned";
+export const POST_GRIEVANCE_PATH = "/gms/post";
+export const GRIEVANCE_INFO_PATH = "/gms/info";
+export const GRIEVANCE_HANDLE_PATH = "/gms/handle";
