@@ -38,20 +38,24 @@ const Header = () => {
               className={`${headerClasses["nav-link"]} ${headerClasses["nav-profile"]} d-flex align-items-center pe-0`}
             >
               <img
-                src={simpson_profile}
+                src="https://png.pngtree.com/png-vector/20220817/ourmid/pngtree-man-avatar-with-circle-frame-vector-ilustration-png-image_6110328.png"
                 alt="Profile"
                 className="rounded-circle"
               />
               <span
                 className="d-none d-md-block dropdown-toggle ps-2"
-                style={{ textDecoration: "underline white" }}
+                style={{ textDecoration: "none" }}
               >
                 Simpson
               </span>
             </span>
           </li>
           <li>
-            <button className="btn btn-light" onClick={logoutHandler}>
+            <button
+              className="btn btn-light"
+              onClick={logoutHandler}
+              style={{ background: "#b3b3b3", "border-color": "#b3b3b3" }}
+            >
               Logout
             </button>
           </li>

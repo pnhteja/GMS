@@ -88,7 +88,7 @@ const MyComment = (props) => {
     );
   }
 
-  return <div>{commentContent}</div>;
+  return <div class="card"></div>;
 };
 
 export default MyComment;

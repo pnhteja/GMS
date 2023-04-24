@@ -215,27 +215,29 @@ const Votes = (props) => {
     //     </div>
     //   </div>
     // </div>
-    <div style={{ marginBottom: "15px" }}>
+    <span style={{ marginBottom: "15px" }}>
       <button
         type="button"
         class={`btn btn-${voteState.upvoted ? "success" : "light"}`}
         onClick={upvoteHandler}
-        style={{ marginRight: "10px" }}
+        style={{ marginRight: "10px", marginBottom: "10px" }}
       >
         <span>{voteState.upvotesCount}</span>
-        <i class="bi bi-arrow-up-square" style={{ marginLeft: "5px" }}></i>
+        {/* <i class="bi bi-arrow-up-square" style={{ marginLeft: "5px" }}></i> */}
+        <i class="bi bi-hand-thumbs-up" style={{ marginLeft: "5px" }}></i>
       </button>
       <button
         type="button"
         class={`btn btn-${voteState.downvoted ? "danger" : "light"}`}
         onClick={downvoteHandler}
-        style={{ marginRight: "10px" }}
+        style={{ marginRight: "10px", marginBottom: "10px" }}
       >
         <span>{voteState.downvotesCount}</span>
-        <i class="bi bi-arrow-down-square" style={{ marginLeft: "5px" }}></i>
+        {/* <i class="bi bi-arrow-down-square" style={{ marginLeft: "5px" }}></i> */}
+        <i class="bi bi-hand-thumbs-down" style={{ marginLeft: "5px" }}></i>
       </button>
       {voteState.errorMsg && <span>{voteState.errorMsg}</span>}
-    </div>
+    </span>
   );
 };
 
