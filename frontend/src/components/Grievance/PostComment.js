@@ -2,17 +2,16 @@ import { useSelector } from "react-redux";
 
 const PostComment = (props) => {
   const userId = useSelector((state) => state.auth.userId);
-  const { grievanceId } = props;
-  const postCommentHandler = async (event) => {
-    event.preventDefault();
-    console.log(userId);
+  const { endpoint, grievanceId } = props;
+  const postCommentHandler = async () => {
+    const textElement = document.querySelector("#commentText");
     const commentData = {
       userId,
       grievanceId: grievanceId,
-      text: event.target.commentText.value,
+      text: textElement.value,
     };
 
-    const response = await fetch("/grievance/comments/new", {
+    await fetch(endpoint, {
       method: "POST",
       body: JSON.stringify(commentData),
       headers: {
@@ -20,10 +19,14 @@ const PostComment = (props) => {
       },
     });
 
-    // const data = await response.json();
-    // console.log(data);
-    event.target.commentText.value = "";
+    textElement.value = "";
   };
+
+  const cancelHandler = () => {
+    const textElement = document.querySelector("#commentText");
+    textElement.value = "";
+  };
+
   return (
     <span>
       <button
@@ -34,7 +37,7 @@ const PostComment = (props) => {
         style={{ marginRight: "10px", marginBottom: "10px" }}
       >
         {/* <span>Comment</span> */}
-        <i class="bi bi-chat"></i>
+        <i className="bi bi-chat"></i>
       </button>
       <div
         className="modal fade"
@@ -55,60 +58,46 @@ const PostComment = (props) => {
                 data-bs-dismiss="modal"
               ></button>
             </div>
-            <form onSubmit={postCommentHandler}>
-              <div className="modal-body">
-                <div class="card">
-                  <div
-                    class="card-footer py-3 border-0"
-                    style={{ "background-color": "#f8f9fa" }}
-                  >
-                    <div class="d-flex flex-start w-100">
-                      <div class="form-outline w-100">
-                        <textarea
-                          class="form-control"
-                          id="textAreaExample"
-                          name="commentText"
-                          rows="4"
-                          style={{ background: "#fff" }}
-                        ></textarea>
-                        {/* <label class="form-label" for="textAreaExample">
-                        Message
-                      </label> */}
-                      </div>
+            <div className="modal-body">
+              <div className="card">
+                <div
+                  className="card-footer py-3 border-0"
+                  style={{ backgroundColor: "#f8f9fa" }}
+                >
+                  <div className="d-flex flex-start w-100">
+                    <div className="form-outline w-100">
+                      <textarea
+                        className="form-control"
+                        id="commentText"
+                        name="commentText"
+                        rows="4"
+                        style={{ background: "#fff" }}
+                      ></textarea>
                     </div>
-                    {/* <div class="float-end mt-2 pt-1">
-                    <button type="button" class="btn btn-primary btn-sm">
-                      Post comment
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-outline-primary btn-sm"
-                    >
-                      Cancel
-                    </button>
-                  </div> */}
                   </div>
                 </div>
               </div>
-              <div className="modal-footer">
-                <button
-                  id="cancel"
-                  type="submit"
-                  className="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Cancel
-                </button>
-                <button
-                  id="postComment"
-                  type="submit"
-                  className="btn btn-primary"
-                  data-bs-dismiss="modal"
-                >
-                  Post Comment
-                </button>
-              </div>
-            </form>
+            </div>
+            <div className="modal-footer">
+              <button
+                id="cancel"
+                type="submit"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+                onClick={cancelHandler}
+              >
+                Cancel
+              </button>
+              <button
+                id="postComment"
+                type="submit"
+                className="btn btn-primary"
+                data-bs-dismiss="modal"
+                onClick={postCommentHandler}
+              >
+                Post Comment
+              </button>
+            </div>
           </div>
         </div>
       </div>
