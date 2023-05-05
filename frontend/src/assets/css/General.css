@@ -5,10 +5,11 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  /* background: #f6f9ff; */
-  background: #121212;
-  /* color: #444444; */
-  color: #6d5d6e;
+  background: #f6f9ff;
+  color: #444444;
+  /* Dark Mode */
+  /* background: #121212;
+  color: #6d5d6e; */
 }
 
 a {

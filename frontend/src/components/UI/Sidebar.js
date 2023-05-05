@@ -1,42 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
-import {
-  ALL_GRIEVANCES_PATH,
-  ASSIGNED_GRIEVANCES_PATH,
-  HOME_PATH,
-  MY_GRIEVANCES_PATH,
-  POST_GRIEVANCE_PATH,
-} from "../../routes";
+
 import classes from "../../assets/css/Sidebar.module.css";
+import { useSelector } from "react-redux";
 
-const ROUTES = [
-  HOME_PATH,
-  ALL_GRIEVANCES_PATH,
-  MY_GRIEVANCES_PATH,
-  ASSIGNED_GRIEVANCES_PATH,
-  POST_GRIEVANCE_PATH,
-];
-
-const DESCRIPTIONS = [
-  "Home",
-  "All Grievances",
-  "My Grievances",
-  "Assigned Grievances",
-  "Post Grievance",
-];
-
-const ICONS = [
-  "bi bi-grid",
-  "bi bi-hdd-stack",
-  "bi bi-journal-text",
-  "bi bi-postcard",
-  "bi bi-pencil-square",
-];
-
-const Sidebar = () => {
-  const content = ROUTES.map((route, index) => {
+const Sidebar = (props) => {
+  const userId = useSelector((state) => state.auth.userId);
+  const content = props.ROUTES.map((route, index) => {
     return (
       <li key={index} className={`${classes["nav-item"]}`}>
         <NavLink
+          // to={`${route}${index === 2 || index === 3 ? "/" + userId : ""}`}
           to={route}
           className={({ isActive }) =>
             isActive
@@ -44,8 +17,8 @@ const Sidebar = () => {
               : `${classes["nav-link"]} ${classes["collapsed"]}`
           }
         >
-          <i className={ICONS[index]}></i>
-          <span>{DESCRIPTIONS[index]}</span>
+          <i className={props.ICONS[index]}></i>
+          <span>{props.DESCRIPTIONS[index]}</span>
         </NavLink>
       </li>
     );
