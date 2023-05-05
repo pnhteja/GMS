@@ -16,7 +16,7 @@ const {
 
 const dbUrl = process.env.DB_URL;
 
-schedule.scheduleJob("1 * * * *", async function () {
+schedule.scheduleJob("11 * * * *", async function () {
   mongoose.connect(dbUrl);
   const db = mongoose.connection;
   db.on("error", console.error.bind(console, "Connection Error:"));
@@ -57,7 +57,7 @@ schedule.scheduleJob("1 * * * *", async function () {
       }
 
       // Automatic Escalation
-      else {
+      else if (deadlineDate < currentDate) {
         const escalation = await getHandlerEmail(
           grievance.category,
           grievance.escalationLevel + 1

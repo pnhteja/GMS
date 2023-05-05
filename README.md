@@ -84,6 +84,13 @@ To get a local copy up and running follow these simple example steps.
    http://localhost:3000/
    ```
 
+### Deadline Reminders and Automatic Escalation
+
+1. Go to backend folder
+   ```sh
+   node email/deadline.js
+   ```
+
 ### Running Tests
 
 1. Go to backend folder and run the following command.
