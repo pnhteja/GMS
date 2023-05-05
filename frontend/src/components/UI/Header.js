@@ -1,13 +1,13 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { authActions } from "../../store/slices/auth-slice";
 import { HOME_PATH, LOGIN_PATH } from "../../routes";
 import headerClasses from "../../assets/css/Header.module.css";
 import logoClasses from "../../assets/css/Logo.module.css";
 import iith_logo from "../../assets/img/iith-logo.png";
-import simpson_profile from "../../assets/img/simpson-profile.jpg";
 
 const Header = () => {
+  const userName = useSelector((state) => state.auth.name);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const logoutHandler = () => {
@@ -46,7 +46,7 @@ const Header = () => {
                 className="d-none d-md-block dropdown-toggle ps-2"
                 style={{ textDecoration: "none" }}
               >
-                Simpson
+                {userName}
               </span>
             </span>
           </li>
@@ -54,7 +54,7 @@ const Header = () => {
             <button
               className="btn btn-light"
               onClick={logoutHandler}
-              style={{ background: "#b3b3b3", "border-color": "#b3b3b3" }}
+              // style={{ background: "#b3b3b3", "border-color": "#b3b3b3" }}
             >
               Logout
             </button>
