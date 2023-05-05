@@ -27,6 +27,7 @@ const grievanceSchema = mongoose.Schema(
     status: {
       type: String,
       required: true,
+      default: "pending",
     },
     upvotesCount: {
       type: Number,
@@ -39,6 +40,18 @@ const grievanceSchema = mongoose.Schema(
     commentsCount: {
       type: Number,
       default: 0,
+    },
+    escalationLevel: {
+      type: Number,
+      default: 0,
+    },
+    deadline: {
+      type: Date,
+      default: Date.now,
+    },
+    visibility: {
+      type: String,
+      default: "public",
     },
   },
   { timestamps: true }
