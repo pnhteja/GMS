@@ -1,9 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useReducer, useState } from "react";
-import { Fragment } from "react";
-
-import yet_another_login from "../assets/img/yet-another-login.jpg";
 import iith_logo from "../assets/img/iith-logo.png";
 import logoClasses from "../assets/css/Logo.module.css";
 import cardClasses from "../assets/css/Card.module.css";
@@ -39,6 +36,10 @@ const LoginPage = () => {
     authStateDispatch({ type: "FIRST_TRY_OVER", status: authStatus });
   };
 
+  const loginAsAdminHandler = () => {
+    navigate("/admin/home");
+  };
+
   useEffect(() => {
     if (authStatus) {
       navigate("/gms/home");
@@ -46,35 +47,15 @@ const LoginPage = () => {
   }, [authStatus, navigate]);
 
   return (
-    // <Fragment>
-    //   <h1>Sign in with Google</h1>
-    //   <div>
-    //     <img src={yet_another_login} alt="login meme" />
-    //   </div>
-    //   <form onSubmit={loginHandler}>
-    //     <div>
-    //       <label htmlFor="email">Email</label>
-    //       <input type="email" id="email" name="email" required />
-    //     </div>
-    //     <div>
-    //       <button>Login</button>
-    //     </div>
-    //   </form>
-    //   <div>
-    //     {!authState.isFirstTry && !authState.loginStatus && (
-    //       <p>Authentication failed ! Please enter valid IITH email</p>
-    //     )}
-    //   </div>
-    // </Fragment>
     <main>
       <div className="container">
         <section className="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
-                <div>
+                {/* <div>
                   <img src={yet_another_login} alt="login meme" />
-                </div>
+                </div> */}
                 <div className="d-flex justify-content-center py-4">
                   <div
                     className={`${logoClasses.logo} d-flex align-items-center w-auto`}
@@ -102,8 +83,27 @@ const LoginPage = () => {
                         />
                       </div>
                       <div className="col-12">
+                        <input
+                          type="password"
+                          id="password"
+                          name="password"
+                          className="form-control"
+                          placeholder="Password"
+                          required
+                        />
+                      </div>
+                      <div className="col-12">
                         <button className="btn btn-primary w-100" type="submit">
-                          Sign in with Google
+                          Sign in as User
+                        </button>
+                      </div>
+                      <div className="col-12">
+                        <button
+                          className="btn btn-primary w-100"
+                          type="button"
+                          onClick={loginAsAdminHandler}
+                        >
+                          Sign in as Admin
                         </button>
                       </div>
                       <div className="col-12">
@@ -132,7 +132,6 @@ const LoginPage = () => {
                     </form>
                   </div>
                 </div>
-
                 <div className="credits">Designed by CSE'23</div>
               </div>
             </div>

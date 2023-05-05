@@ -7,3 +7,7 @@ export const ASSIGNED_GRIEVANCES_PATH = "/gms/assigned";
 export const POST_GRIEVANCE_PATH = "/gms/post";
 export const GRIEVANCE_INFO_PATH = "/gms/info";
 export const GRIEVANCE_HANDLE_PATH = "/gms/handle";
+export const GRIEVANCE_FEEDBACK_PATH = "/gms/feedback";
+export const ADMIN_PATH = "/admin";
+export const ADMIN_HOME_PATH = "/admin/home";
+export const ESCALATION_CHAIN_PATH = "/admin/escalationChain";

@@ -1,7 +1,5 @@
 import { Fragment } from "react";
 import { useLoaderData } from "react-router-dom";
-
-import commentsMeme from "../assets/gif/comments.gif";
 import Grievance from "../components/Grievance/Grievance";
 
 const GrievanceInfoPage = () => {
