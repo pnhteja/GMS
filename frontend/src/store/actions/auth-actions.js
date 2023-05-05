@@ -29,9 +29,9 @@ export const validateAuthInfo = (authData) => {
         })
       );
 
-      dispatch(fetchAllGrievances());
-      dispatch(fetchMyGrievances(data._id));
-      dispatch(fetchAssignedGrievances(data._id));
+      // dispatch(fetchAllGrievances());
+      // dispatch(fetchMyGrievances(data._id));
+      // dispatch(fetchAssignedGrievances(data._id));
     } catch (error) {
       console.log(error);
     }
